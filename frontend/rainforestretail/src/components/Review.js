@@ -33,8 +33,8 @@ const Review = ({ review, deleteReview, editReview }) => {
                     {toggleButtonLabel()}
                 </button>
                 {activeCustomer.id === review.customer.id ?
-                <button onClick={handleDeleteButton}>Delete</button> :
-                <></>}
+                    <button onClick={handleDeleteButton}>Delete</button> :
+                    <></>}
             </div>
         </>);
 }

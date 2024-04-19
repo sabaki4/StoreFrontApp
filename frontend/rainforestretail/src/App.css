@@ -221,6 +221,7 @@ img {
 .item-details {
   text-align: center;
   align-items: center;
+  /* color: black; */
 }
 
 .itemLink a{
@@ -274,7 +275,9 @@ img {
 }
 
 .item-container img{
-  padding: 100px;
+  padding-top: 25px;
+  padding-left: 100px;
+  padding-right: 100px;
   height:400px;
   width:400px;
 }
@@ -301,6 +304,10 @@ img {
     height: 250px;
     margin-bottom: 100px;
     box-shadow: 0 16px 16px black;
+  }
+
+  .sold-out{
+    margin-left: 210px;
   }
 
 /* --------------------------------------------------------------------------------------------------------------------- */
@@ -470,6 +477,7 @@ img {
   color: white;
   border-radius: 10px;
   padding: 20px 20px;
+  margin-bottom: 70px;
 }
 
 .add-basket input{
@@ -757,6 +765,7 @@ margin: 10px;
 
 .order-container{
   margin-left: 20px;
+  height: 100vh;
 }
 
 .order-container button{
@@ -839,6 +848,7 @@ margin: 10px;
 
 .cartContainer{
   height: 100vh;
+  margin-left: 30px;
 }
 .btn {
    width: 100%;

@@ -112,12 +112,16 @@ public class DataLoader implements ApplicationRunner {
         Review review3 = new Review(3, "Great game!", customer4, item10);
         Review review4 = new Review(5, "Lasted me 50 years!", customer4, item1);
         Review review5 = new Review(5, "I can't believe I finally found the cup of my dreams. My inner child has been healed now 🥹", customer5, item1);
+        Review review6 = new Review(5, "Arsenal is the best team ever! So I love this hat!", customer3, item12);
+        Review review7 = new Review(5, "Fantastic hat, fantastic team, must buy!!!", customer1, item12);
 
         reviewRepository.save(review1);
         reviewRepository.save(review2);
         reviewRepository.save(review3);
         reviewRepository.save(review4);
         reviewRepository.save(review5);
+        reviewRepository.save(review6);
+        reviewRepository.save(review7);
 
         NewOrderDTO newOrderDTO1 = new NewOrderDTO(1L, "");
         NewOrderDTO newOrderDTO2 = new NewOrderDTO(1L, "");

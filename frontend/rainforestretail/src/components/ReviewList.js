@@ -13,12 +13,12 @@ const ReviewList = ({ reviews, deleteReview, editReview }) => {
 
     return (
         <div className="review-componentlist">
-        
+
             <ul>
                 {reviewComponents}
             </ul>
         </div>
     );
 };
- 
+
 export default ReviewList;

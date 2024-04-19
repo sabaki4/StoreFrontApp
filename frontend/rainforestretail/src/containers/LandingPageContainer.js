@@ -5,7 +5,7 @@ import Slideshow from '../components/Slideshow';
 
 
 const LandingPageContainer = ({ items }) => {
-    
+
     const fashionItems = items.filter(item => item.category === 'FASHION');
     const electronicsItems = items.filter(item => item.category === 'ELECTRONICS');
     const beautyAndWellnessItems = items.filter(item => item.category === 'BEAUTY_AND_WELLNESS');
@@ -15,9 +15,7 @@ const LandingPageContainer = ({ items }) => {
             <div className='handleLists'>
                 <DraggableCardSlider items={fashionItems} category="Fashion" />
             </div>
-
             <Slideshow />
-
             <div className='handleLists'>
                 <DraggableCardSlider items={electronicsItems} category="Electronics" />
             </div>

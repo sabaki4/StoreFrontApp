@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import ItemThumbnail from "../components/ItemThumbnail";
 
 
-const BrowseItemsContainer = ({ items}) => {
+const BrowseItemsContainer = ({ items }) => {
     const categories = Array.from(new Set(items.map(item => item.category)));
     const [selectedCategory, setSelectedCategory] = useState('All');
     const [minPrice, setMinPrice] = useState('');
@@ -48,9 +48,9 @@ const BrowseItemsContainer = ({ items}) => {
 
     return (
         <div className='BrowseItem'>
-            <select 
+            <select
                 className="filter-select"
-                value={selectedCategory} 
+                value={selectedCategory}
                 onChange={handleCategoryChange}
             >
                 <option value="All">All Categories</option>
@@ -59,23 +59,23 @@ const BrowseItemsContainer = ({ items}) => {
                 ))}
             </select>
 
-            <input 
+            <input
                 className="filter-input"
-                type="text" 
-                placeholder="Min Price" 
-                value={minPrice} 
+                type="text"
+                placeholder="Min Price"
+                value={minPrice}
                 onChange={handleMinPriceChange}
             />
-            <input 
+            <input
                 className="filter-input"
-                type="text" 
-                placeholder="Max Price" 
-                value={maxPrice} 
+                type="text"
+                placeholder="Max Price"
+                value={maxPrice}
                 onChange={handleMaxPriceChange}
             />
-            <select 
+            <select
                 className="filter-dropdown"
-                value={sortByPrice} 
+                value={sortByPrice}
                 onChange={handleSortByPriceChange}
             >
                 <option value="">Sort By Price</option>
@@ -83,7 +83,7 @@ const BrowseItemsContainer = ({ items}) => {
                 <option value="desc">High to Low</option>
             </select>
 
-            <ul className = "browse-items">
+            <ul className="browse-items">
                 {filteredItems.map(item => (
                     <li key={item.id}>
                         <Link to={`/items/${item.id}`}><ItemThumbnail item={item} /></Link>

@@ -6,6 +6,7 @@ const YourOrder = ({ orders }) => {
 
 
     const filteredOrders = orders.filter(order => order.customer.id === activeCustomer.id);
+    console.log(filteredOrders);
 
     return (
 

@@ -18,10 +18,13 @@ const Slideshow = () => {
     }, [currentSlide, totalSlides]);
 
     return (
-        <div id="slideshow" style={{ position: 'relative', 
-        width: '1300px', height: '400px', overflow: 'hidden',
-        marginLeft: '75px', border:'5px darkgreen solid',
-        borderRadius: '10px', boxShadow :'0 16px 16px black'}}>
+        <div id="slideshow" style={{
+            position: 'relative',
+            width: '99.5%', height: '400px', overflow: 'hidden',
+            alignItems: 'center',
+            border: '5px darkgreen solid',
+            borderRadius: '10px', boxShadow: '0 16px 16px black'
+        }}>
             {slides.map((slide, index) => (
                 <img
                     key={index}

@@ -15,7 +15,7 @@ export const userState = React.createContext();
 const StoreContainer = () => {
     const [customers, setCustomers] = useState([]);
     const [items, setItems] = useState([]);
-    const [orders , setOrders] = useState([]);
+    const [orders, setOrders] = useState([]);
     const [reviews, setReviews] = useState([]);
     const [purchaseList, setPurchaseList] = useState([]);
     const [basketList, setBasketList] = useState([]);
@@ -98,7 +98,7 @@ const StoreContainer = () => {
     const postReview = async (newReview) => {
         const response = await fetch("http://localhost:8080/reviews", {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newReview)
         });
         fetchItems();
@@ -107,7 +107,7 @@ const StoreContainer = () => {
     const patchReview = async (amendedReview, reviewId) => {
         const response = await fetch(`http://localhost:8080/reviews/${reviewId}`, {
             method: "PATCH",
-            headers: {"Content-Type": "application/json"},
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(amendedReview)
         });
         fetchReviews();
@@ -117,13 +117,13 @@ const StoreContainer = () => {
     const deleteReview = async (reviewId) => {
         const response = await fetch(`http://localhost:8080/reviews/${reviewId}`, {
             method: "DELETE",
-            headers: {"Content-Type": "application/json"},
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(reviewId)
         });
         fetchItems();
     }
 
-    useEffect(() =>{
+    useEffect(() => {
         fetchCustomers();
         fetchItems();
         fetchOrders();
@@ -131,7 +131,7 @@ const StoreContainer = () => {
         fetchOrderedItems();
     }, [])
 
-    const itemLoader = ({params}) => {
+    const itemLoader = ({ params }) => {
         return items.find(item => {
             return item.id === parseInt(params.itemId);
         });
@@ -142,8 +142,8 @@ const StoreContainer = () => {
     }
 
     const completeOrder = async (basketItems, customerId, address) => {
-       
-        const newOrder = {customerId: customerId, address: address};
+
+        const newOrder = { customerId: customerId, address: address };
 
         const newOrderResponse = await fetch("http://localhost:8080/orders", {
             method: "POST",
@@ -160,7 +160,7 @@ const StoreContainer = () => {
                 orderId: newOrderData.id,
                 orderQuantity: basketItem.orderQuantity
             };
-            
+
             const response = await fetch("http://localhost:8080/ordered-items", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -175,7 +175,7 @@ const StoreContainer = () => {
     }
 
 
-    const userNames = customers.map((customer)=>{
+    const userNames = customers.map((customer) => {
         <li>{customer.name}</li>
     });
 
@@ -195,25 +195,25 @@ const StoreContainer = () => {
                 },
                 {
                     path: "/home",
-                    element: <LandingPageContainer items={items}/>
+                    element: <LandingPageContainer items={items} />
                 },
                 {
                     path: "/items/:itemId",
                     loader: itemLoader,
-                    element: <Item  
-                              postReview={postReview}
-                              deleteReview={deleteReview}
-                              editReview={patchReview}
-                              addToBasket={addToBasket}
-                              />
+                    element: <Item
+                        postReview={postReview}
+                        deleteReview={deleteReview}
+                        editReview={patchReview}
+                        addToBasket={addToBasket}
+                    />
                 },
                 {
                     path: "/login",
-                    element: <Login customers = {customers} />
+                    element: <Login customers={customers} />
                 },
                 {
                     path: "/register",
-                    element: <Registration customers = {customers} postCustomer={postCustomer} />
+                    element: <Registration customers={customers} postCustomer={postCustomer} />
                 },
                 {
                     path: "/browse",
@@ -221,11 +221,11 @@ const StoreContainer = () => {
                 },
                 {
                     path: "/basket",
-                    element: <ShoppingCart basketList={basketList} completeOrder={completeOrder} removeFromBasket={removeFromBasket}/>
+                    element: <ShoppingCart basketList={basketList} completeOrder={completeOrder} removeFromBasket={removeFromBasket} />
                 },
                 {
                     path: "/orders",
-                    element: <YourOrder orders={orders}/>
+                    element: <YourOrder orders={orders} />
                 }
             ]
         }
@@ -233,17 +233,14 @@ const StoreContainer = () => {
 
 
 
-    return ( 
+    return (
         <div className="container">
-            <userState.Provider value={{ activeCustomer:activeCustomer, setActiveCustomer:setActiveCustomer}}>
+            <userState.Provider value={{ activeCustomer: activeCustomer, setActiveCustomer: setActiveCustomer }}>
                 <RouterProvider router={retailRouter} />
             </userState.Provider>
-            {/* <ul>
-                {userNames}
-            </ul> */}
         </div>
-        
+
     );
 }
- 
+
 export default StoreContainer;
